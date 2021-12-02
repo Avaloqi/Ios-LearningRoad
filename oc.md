@@ -35,11 +35,13 @@
 ### Assigning to "id<CALayerDelegate> _Nullable" from incompatible type "ZXCapture *const __strong" 的警告提示信息
 该警告提示信息，是说，设置了代理对象，但是并没有继承它的代理
             
-            ![image](https://user-images.githubusercontent.com/51845254/144391069-6acb0e10-30d8-4be9-b380-4d5d94f8743e.png)
+![image](https://user-images.githubusercontent.com/51845254/144391336-21aedafb-49dd-4a15-9939-07c89c1aa524.png)
+
             
 解决方法，很简单，（在 @interface 文件中继承它的代理即可）如下
             
-            ![image](https://user-images.githubusercontent.com/51845254/144391125-914664ec-7f62-42b8-b943-c17881de2f66.png)
+            ![image](https://user-images.githubusercontent.com/51845254/144391295-1b7228a9-957c-4bbd-89ff-d9032178086d.png)
+
 
             
             
