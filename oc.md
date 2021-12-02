@@ -40,7 +40,7 @@
             
 解决方法，很简单，（在 @interface 文件中继承它的代理即可）如下
             
-            ![image](https://user-images.githubusercontent.com/51845254/144391295-1b7228a9-957c-4bbd-89ff-d9032178086d.png)
+![image](https://user-images.githubusercontent.com/51845254/144391295-1b7228a9-957c-4bbd-89ff-d9032178086d.png)
 
 
             
