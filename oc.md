@@ -3,7 +3,20 @@
 
 ## 基本方法记录
 
+### 按钮（等控件）配置圆角边框
+            self.clearButton.layer.cornerRadius = 5;
+            self.clearButton.layer.borderColor = [[UIColor blackColor] CGColor];
+            self.clearButton.layer.borderWidth = 0.5;
+            self.clearButton.layer.masksToBounds = YES;
+  
+### 按钮（等控件）配置圆角
+            self.setButton.layer.cornerRadius = 5;
+            self.setButton.clipsToBounds = YES;
+
 ### 监听键盘
+
+创建通知中心监听相应的键盘动作， 配置selector来进行后续操作
+
             NSNotificationCenter *nCenter = NSNotificationCenter.defaultCenter;
 
             [nCenter addObserver:self selector:@selector(adjustForKeyBoardHide) name:UIKeyboardWillHideNotification object:nil];
@@ -29,6 +42,14 @@
     
             [ac addAction: defalutAction];
             [self presentViewController:ac animated:YES completion:nil];
+            
+### 根据条件调用segue的行动
+
+![image](https://user-images.githubusercontent.com/51845254/144395790-b55c8513-ac82-43cd-af9f-f2610f312f2e.png)
+
+使用故事版时，从这个位置拉出segue连接到其他页面，设置segue的identifier，在需要时用下面的命令调用
+
+            [self performSegueWithIdentifier:@"showBlueT" sender:nil];
 
 ## 警告消除⚠️
 
