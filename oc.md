@@ -38,10 +38,10 @@
 ![image](https://user-images.githubusercontent.com/51845254/144391336-21aedafb-49dd-4a15-9939-07c89c1aa524.png)
 
             
-解决方法，很简单，（在 @interface 文件中继承它的代理即可）如下
+解决方法很简单，（在 @interface 文件中继承它的代理即可）如下:
             
 ![image](https://user-images.githubusercontent.com/51845254/144391295-1b7228a9-957c-4bbd-89ff-d9032178086d.png)
 
-
+(这种情况可见于在.h中使用@protocol ***delegate类似的方式导入代理， 以及导入了相关框架，如#import "CoreBluetooth/CoreBluetooth.h" ，但没有在@interface ***ViewController () <>的<>里加入代理)
             
             
