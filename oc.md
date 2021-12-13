@@ -1,7 +1,7 @@
 # Objective-c 
 
 
-## - 基本方法记录
+## 基本方法记录
 
 ### Objective-C中字典的使用方法总结 
 https://www.cnblogs.com/xiaomanon/p/5700195.html
