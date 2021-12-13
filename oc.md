@@ -3,6 +3,9 @@
 
 ## 基本方法记录
 
+### Objective-C中字典的使用方法总结 
+https://www.cnblogs.com/xiaomanon/p/5700195.html
+
 ### 按钮（等控件）配置圆角边框
             self.clearButton.layer.cornerRadius = 5;
             self.clearButton.layer.borderColor = [[UIColor blackColor] CGColor];
@@ -24,7 +27,7 @@
             [nCenter addObserver:self selector:@selector(adjustForKeyBoard) name:UIKeyboardWillChangeFrameNotification object:nil];
             
 ### 获取键盘高度
-
+https://www.jianshu.com/p/dd761d0b4966
 
 ### 自定义模式的UIBarbuttonItem
             UIBarButtonItem *ScanQrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed: @"qrcode.viewfinder"] style:UIBarButtonItemStylePlain target:self action:@selector(StartScan)];
