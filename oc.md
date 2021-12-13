@@ -51,6 +51,20 @@
 
             [self performSegueWithIdentifier:@"showBlueT" sender:nil];
 
+### UITextField shouldChangeCharactersInRange 获取真实数据
+
+https://www.jianshu.com/p/0999a59eaef6
+
+在这个方法UITextField shouldChangeCharactersInRange里面，调用：
+
+      NSString * str = [textField.text stringByReplacingCharactersInRange:range withString:string];
+
+### iOS开发之将字典、数组转为JSON字符串方法
+
+https://www.cnblogs.com/hecanlin/p/10752986.html
+
+### 关于cell中textfield值回传的问题
+
 ## 警告消除⚠️
 
 ### Assigning to "id<CALayerDelegate> _Nullable" from incompatible type "ZXCapture *const __strong" 的警告提示信息
