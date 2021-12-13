@@ -3,7 +3,7 @@
 
 ## 基本方法记录
 
-### Objective-C中字典的使用方法总结 
+### - Objective-C中字典的使用方法总结 
 https://www.cnblogs.com/xiaomanon/p/5700195.html
 
 
@@ -106,7 +106,7 @@ https://www.cnblogs.com/hecanlin/p/10752986.html
 
 ## 警告消除⚠️
 
-### Assigning to "id<CALayerDelegate> _Nullable" from incompatible type "ZXCapture *const __strong" 的警告提示信息
+### - Assigning to "id<CALayerDelegate> _Nullable" from incompatible type "ZXCapture *const __strong" 的警告提示信息
 该警告提示信息，是说，设置了代理对象，但是并没有继承它的代理
             
 ![image](https://user-images.githubusercontent.com/51845254/144391336-21aedafb-49dd-4a15-9939-07c89c1aa524.png)
