@@ -22,6 +22,9 @@
             [nCenter addObserver:self selector:@selector(adjustForKeyBoardHide) name:UIKeyboardWillHideNotification object:nil];
 
             [nCenter addObserver:self selector:@selector(adjustForKeyBoard) name:UIKeyboardWillChangeFrameNotification object:nil];
+            
+### 获取键盘高度
+
 
 ### 自定义模式的UIBarbuttonItem
             UIBarButtonItem *ScanQrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed: @"qrcode.viewfinder"] style:UIBarButtonItemStylePlain target:self action:@selector(StartScan)];
@@ -60,10 +63,35 @@ https://www.jianshu.com/p/0999a59eaef6
       NSString * str = [textField.text stringByReplacingCharactersInRange:range withString:string];
 
 ### iOS开发之将字典、数组转为JSON字符串方法
-
 https://www.cnblogs.com/hecanlin/p/10752986.html
 
 ### 关于cell中textfield值回传的问题
+参考 https://www.jianshu.com/p/bfd1df44af46
+
+使用场景在collection cell里有textfield的情况， 传一个字典和要对应修改的键key进去， 在cell里修改的位置进行setValue即可
+
+            - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+                        parameterCoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"ParameterCoCell" forIndexPath:indexPath];
+                        cell.data = self.lastDic;
+                        cell.paraName = paramName;
+在cell文件里增加接受位
+
+            @property (nonatomic, strong) NSMutableDictionary *data;
+            @property (nonatomic, strong) NSString *paraName;
+
+ 在修改的位置更改字典对应键的值
+ 
+            - (void)textFieldDidEndEditing:(UITextField *)textField {
+           
+                        if ([textField.text isEqualToString:self.lastTF]) {
+                                    self.layer.borderColor = nil;
+                        } else {
+                                    self.layer.borderColor = UIColor.redColor.CGColor;
+                                    [self.data setValue:textField.text forKey:self.paraName];
+                        }
+    
+            }
+
 
 ## 警告消除⚠️
 
