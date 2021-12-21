@@ -31,6 +31,31 @@ https://www.cnblogs.com/xiaomanon/p/5700195.html
 https://www.jianshu.com/p/dd761d0b4966
 
 
+### - iOS禁止右滑返回页面
+
+需要禁止右滑的controller里面引入代理
+
+            @interface ***controller ()<UIGestureRecognizerDelegate>
+            @end
+            @implementation ***controller
+
+            - (void)viewDidAppear:(BOOL)animated {
+                        [super viewDidAppear:animated];
+                        if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+                                    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+                        }
+            }
+            - (void)viewWillDisappear:(BOOL)animated {
+            	[super viewWillDisappear:animated];
+            	if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+                        	self.navigationController.interactivePopGestureRecognizer.delegate = nil;
+                        }
+            }
+            - (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+                        return NO;
+            }
+            @end
+
 ### - 自定义模式的UIBarbuttonItem
             UIBarButtonItem *ScanQrButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed: @"qrcode.viewfinder"] style:UIBarButtonItemStylePlain target:self action:@selector(StartScan)];
 
