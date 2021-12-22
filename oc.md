@@ -126,7 +126,45 @@ https://www.cnblogs.com/hecanlin/p/10752986.html
     
             }
 
+## 需要注意的ios版本问题
 
+### 导航栏相关属性设置时，ios15的写法与过去有所区别
+
+参考来源：https://www.jianshu.com/p/f7dc127ecda9
+
+升上iOS15后，发现使用系统提供的导航栏滑动时会变透明，navigationBar的barTintColor设置无效。在有UIScrollView的情况下，上划后barTintColor生效，返回时正常。
+
+解决方案：
+在 iOS 15 中，UIKit 将 的使用扩展scrollEdgeAppearance到所有导航栏，默认情况下会产生透明背景。背景由滚动视图何时滚动导航栏后面的内容来控制。您的屏幕截图表明您已滚动到顶部，因此导航栏在滚动时选择scrollEdgeAppearance了standardAppearance它，并且在以前版本的 iOS 上。
+要恢复老样子，你必须采用新UINavigationBar外观的API， UINavigationBarAppearance。删除您现有的自定义并执行如下操作：
+
+Swift版本：
+
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = <your tint color>
+            navigationBar.standardAppearance = appearance;
+            navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+            
+Objective-C写法：
+
+        if (@available(iOS 13.0, *)) {
+            self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+            UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc]init];
+            [appearance configureWithOpaqueBackground];
+            //导航栏背景颜色（直接显示的颜色）
+            appearance.backgroundColor = [UIColor colorWithHexString:@"#3a8bff" alpha:1];
+            //导航栏标题颜色（可以自定义标题字号和颜色）
+            [appearance setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+            self.navigationController.navigationBar.standardAppearance = appearance;
+            self.navigationController.navigationBar.scrollEdgeAppearance = self.navigationController.navigationBar.standardAppearance;
+        } else {
+            self.navigationController.navigationBarHidden = NO;
+            self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+            self.navigationController.navigationBar.translucent = NO;  //取消导航栏的毛玻璃效果，处理色差问题
+            self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#3a8bff" alpha:1];
+            }
+            
 
 
 ## 警告消除⚠️
