@@ -130,11 +130,15 @@ https://www.cnblogs.com/hecanlin/p/10752986.html
 
 ### 导航栏相关属性设置时，ios15的写法与过去有所区别
 
+<details>
+<summary>参考资料</summary>
+
 参考资料：https://developer.apple.com/forums/thread/682420
 
 参考来源：https://www.jianshu.com/p/f7dc127ecda9
 
 导航栏标题自定义参考：https://www.jianshu.com/p/609077d85bc8
+</details>
 
 升上iOS15后，发现使用系统提供的导航栏滑动时会变透明，navigationBar的barTintColor设置无效。在有UIScrollView的情况下，上划后barTintColor生效，返回时正常。
 
@@ -142,7 +146,8 @@ https://www.cnblogs.com/hecanlin/p/10752986.html
 在 iOS 15 中，UIKit 将 的使用扩展scrollEdgeAppearance到所有导航栏，默认情况下会产生透明背景。背景由滚动视图何时滚动导航栏后面的内容来控制。您的屏幕截图表明您已滚动到顶部，因此导航栏在滚动时选择scrollEdgeAppearance了standardAppearance它，并且在以前版本的 iOS 上。
 要恢复老样子，你必须采用新UINavigationBar外观的API， UINavigationBarAppearance。删除您现有的自定义并执行如下操作：
 
-Swift版本：
+<details>
+<summary>Swift写法: </summary>
 
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -150,7 +155,8 @@ Swift版本：
             navigationBar.standardAppearance = appearance;
             navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
             
-
+</details>
+            
 <details>
 <summary>Objective-C写法：</summary>
             
