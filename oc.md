@@ -149,6 +149,7 @@ Swift版本：
 Objective-C写法：
 
         if (@available(iOS 13.0, *)) {
+            self.navigationController.navigationBarHidden = NO;
             self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
             UINavigationBarAppearance *appearance = [[UINavigationBarAppearance alloc]init];
             [appearance configureWithOpaqueBackground];
