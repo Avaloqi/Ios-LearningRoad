@@ -130,7 +130,10 @@ https://www.cnblogs.com/hecanlin/p/10752986.html
 
 ### 导航栏相关属性设置时，ios15的写法与过去有所区别
 
+参考资料：https://developer.apple.com/forums/thread/682420
+
 参考来源：https://www.jianshu.com/p/f7dc127ecda9
+
 导航栏标题自定义参考：https://www.jianshu.com/p/609077d85bc8
 
 升上iOS15后，发现使用系统提供的导航栏滑动时会变透明，navigationBar的barTintColor设置无效。在有UIScrollView的情况下，上划后barTintColor生效，返回时正常。
