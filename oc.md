@@ -151,8 +151,9 @@ Swift版本：
             navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
             
 Objective-C写法：
-<detail>code</detail>
-<summary>
+
+<details>
+<summary>code</summary>
             
         if (@available(iOS 13.0, *)) {
             self.navigationController.navigationBarHidden = NO;
@@ -172,7 +173,7 @@ Objective-C写法：
             self.navigationController.navigationBar.barTintColor = [UIColor colorWithHexString:@"#3a8bff" alpha:1];
             }
             
-</summary>            
+</details>            
 
 
 ## 警告消除⚠️
