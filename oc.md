@@ -150,10 +150,9 @@ Swift版本：
             navigationBar.standardAppearance = appearance;
             navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
             
-Objective-C写法：
 
 <details>
-<summary>code</summary>
+<summary>Objective-C写法：</summary>
             
         if (@available(iOS 13.0, *)) {
             self.navigationController.navigationBarHidden = NO;
