@@ -3,8 +3,23 @@
 
 ## 基本方法记录
 
-### - Objective-C中字典的使用方法总结 
-https://www.cnblogs.com/xiaomanon/p/5700195.html
+### - UIIAlertController的自动消失
+
+原文链接：https://blog.csdn.net/xiaoliu_ios/article/details/50563869
+
+<details>
+            <summary>code</summary>
+
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"提示" message:@"没有上一部了" preferredStyle:UIAlertControllerStyleAlert];
+        [self presentViewController:alert animated:NO completion:nil];
+        [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(creatAlert:) userInfo:alert repeats:NO];
+
+        - (void)creatAlert:(NSTimer *)timer{
+            UIAlertController *alert = [timer userInfo];
+            [alert dismissViewControllerAnimated:YES completion:nil];
+            alert = nil;
+        }
+</details>
 
 
 ### - 按钮（等控件）配置圆角边框
