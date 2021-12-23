@@ -126,6 +126,31 @@ https://www.cnblogs.com/hecanlin/p/10752986.html
     
             }
 
+## tableViewCell添加button并获取点击事件
+参考来自：https://www.jianshu.com/p/b4b4b1ab0e13
+
+在**cell.h中添加button属性，连接故事版中cell原型里的按钮
+在cellForRowAt里给按钮指定事件
+
+    - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+         BarrierCell *cell = [tableView dequeueReusableCellWithIdentifier:@"BarrierCell" forIndexPath: indexPath];
+         
+        [cell.choice addTarget:self action:@selector(cellBtnClicked:event:) forControlEvents:UIControlEventTouchUpInside];
+        return cell;
+      }
+   
+   
+    - (void)cellBtnClicked:(id)sender event:(id)event {
+            NSSet *touches =[event allTouches];
+            UITouch *touch =[touches anyObject];
+            CGPoint currentTouchPosition = [touch locationInView:_tableView];
+            NSIndexPath *indexPath= [_tableView indexPathForRowAtPoint:currentTouchPosition];
+            if (indexPath!= nil) {
+            //do staff
+            NSLog(@"%zd",indexPath.row);
+            }
+        }
+
 ## 需要注意的ios版本问题
 
 ### 导航栏相关属性设置时，ios15的写法与过去有所区别
