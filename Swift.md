@@ -57,7 +57,11 @@
 在两种情况下，都需要用 await 标记可能的悬点，以表明代码在这些点在需要的情况下会被挂起，直到异步函数执行结束。
 也可以在同一段代码中混用两种方式。
 
+
+
+
 ##Tips
+
 ###关于collectionview
 
 ![image](https://user-images.githubusercontent.com/51845254/147029225-faca1ded-e05d-4615-a714-82b3653acffd.png)
