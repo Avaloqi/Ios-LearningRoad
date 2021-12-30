@@ -1,5 +1,62 @@
 # Swift
 
+##Learn
+### async/await
+  
+    func taskkkk() async -> [string] {
+    }
+
+使用这种写法可将函数（方法）定义为异步函数（方法），调用异步函数时，要在调用位置使用await标识此处为可能的悬点，
+与此相应地，执行会被挂起直到异步方法返回， 所有的悬点都需要被标记为await
+以文档代码为例
+    
+    let photoNames = await listPhotos(inGallery: "Summer Vacation")
+    let sortedNames = photoNames.sorted()
+    let name = sortedNames[0]
+    let photo = await downloadPhoto(named: name)
+    show(photo)
+使用await标识可以看作当下面的程序依赖当前程序的返回时，程序可以在此处阻塞式地运行等到方法返回结果，与此同时其他并行代码继续在执行
+比如listPhotos函数必须返回执行才能继续往下走
+
+相比这种实现，async/await 的使用还在于异步序列方式以及并行的调用异步方法
+
+    for try await line in handle.bytes.lines {
+        print(line)
+        //do staff
+    }
+    
+与普通的 for-in 循环相比，上面的列子在 for 之后添加了 await 关键字。就像在调用异步函数或方法时一样，await 表明代码中有一个可能的悬点。for-await-in 循环会在每次循环开始的时候因为有可能需要等待下一个元素而挂起当前代码的执行。
+想让自己创建的类型使用 for-in 循环需要遵循 Sequence 协议，这里也同理，如果想让自己创建的类型使用 for-await-in 循环，就需要遵循 AsyncSequence 协议。
+如果do staff部分依赖于上一次的结果，则可以使用这种方式等待每一次的调用完成
+
+并行的调用异步方法
+调用有 await 标记的异步函数在同一时间只能执行一段代码。在异步代码执行的过程中，调用方需要等待异步代码执行完后才能继续执行下一行代码。比如，当你想从图库中拉取前三张图片，可以像下面这样，等三次调用完后再执行 downloadPhoto(named:) 函数：
+    
+    let firstPhoto = await downloadPhoto(named: photoNames[0])
+    let secondPhoto = await downloadPhoto(named: photoNames[1])
+    let thirdPhoto = await downloadPhoto(named: photoNames[2])
+
+    let photos = [firstPhoto, secondPhoto, thirdPhoto]
+    show(photos)
+这种方式有一个非常严重的缺陷：虽然下载过程是异步的，并且在等待过程中可以执行其他任务，但每次只能执行一个 downloadPhoto(named:)。每一张图片只能在上一张图片下载结束了才开始下载。然而，并没有必要让这些操作等待，每张图片可以独立甚至同时下载。
+为了在调用异步函数的时候让它附近的代码并发执行，定义一个常量时，在 let 前添加 async 关键字，然后在每次使用这个常量时添加 await 标记。
+
+    async let firstPhoto = downloadPhoto(named: photoNames[0])
+    async let secondPhoto = downloadPhoto(named: photoNames[1])
+    async let thirdPhoto = downloadPhoto(named: photoNames[2])
+
+    let photos = await [firstPhoto, secondPhoto, thirdPhoto]
+    show(photos)
+在上面的例子中，三次调用 downloadPhoto(named:) 都不需要等待前一次调用结束。如果系统有足够的资源，这三次调用甚至都可以同时执行。这三次调用都没有没标记为 await，因为代码不需要被挂起等待函数的结果。程序会继续执行直到 photos 被定义，与上面不同的是，在这个时间点由于程序需要上面几次异步调用的结果，所以你需要添加 await 关键字来挂起当前代码的执行直到所有图片下载完成。
+下面是关于两种不同方法的一些说法：
+
+  代码中接下来的几行需要依赖异步函数的结果时，需要使用 await 来调用异步函数。这样产生的结果是有序的。
+  短时间内并不需要异步函数的结果时，需要使用 async-let 来调用异步函数。这样产生的任务是并发的。
+  await 和 async-let 都允许其他任务在他们被挂起的时候执行。
+  
+在两种情况下，都需要用 await 标记可能的悬点，以表明代码在这些点在需要的情况下会被挂起，直到异步函数执行结束。
+也可以在同一段代码中混用两种方式。
+
 ##Tips
 ###关于collectionview
 
