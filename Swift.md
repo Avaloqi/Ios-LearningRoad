@@ -14,14 +14,14 @@ swift常用的集合类型Array，Dictionary，Set都遵循协议 Collection，�
   <summary>protocol Collection</summary>
   
     public protocol Collection : Sequence {
-    associatedtype Index : Comparable
-    var startIndex: Index { get }
-    var endIndex: Index { get }
-    var isEmpty: Bool { get }
-    var count: Int { get }
+        associatedtype Index : Comparable
+        var startIndex: Index { get }
+        var endIndex: Index { get }
+        var isEmpty: Bool { get }
+        var count: Int { get }
   
-    subscript(position: Index) -> Element { get }
-    subscript(bounds: Range<Index>) -> SubSequence { get }
+        subscript(position: Index) -> Element { get }
+        subscript(bounds: Range<Index>) -> SubSequence { get }
     }
 </details>
 Sequence 即序列，该协议目的是一系列相同类型值的集合，并且可以进行迭代（可以看做遍历，使用for-in）
@@ -41,6 +41,8 @@ Sequence 即序列，该协议目的是一系列相同类型值的集合，并�
     }
 </details>
 
+  
+  
 ### async/await
   
     func taskkkk() async -> [string] {
