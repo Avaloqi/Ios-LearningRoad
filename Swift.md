@@ -2,8 +2,12 @@
 
 ##Learn
 
+<details>
+  <summary>00</summary>
+</details>
+
 ### 0x007
-swift常用的集合类型Array，Dictionary，set都遵循协议 Collection，译为集合，是一个元素可以反复遍历并且可以通过索引的下标访问的有限集合
+swift常用的集合类型Array，Dictionary，Set都遵循协议 Collection，译为集合，是一个元素可以反复遍历并且可以通过索引的下标访问的有限集合
 协议Collection继承于Sequence，在Sequence的基础上扩展了下标访问、元素个数能特性。
 
 <details>
@@ -18,6 +22,22 @@ swift常用的集合类型Array，Dictionary，set都遵循协议 Collection，�
   
     subscript(position: Index) -> Element { get }
     subscript(bounds: Range<Index>) -> SubSequence { get }
+    }
+</details>
+Sequence 即序列，该协议目的是一系列相同类型值的集合，并且可以进行迭代（可以看做遍历，使用for-in）
+  
+<details>
+  <summary>protocol Sequence</summary>
+  
+    protocol Sequence {
+        associatedtype Iterator: IteratorProtocol
+        func makeIterator() -> Iterator
+    }
+  
+    //其引入的协议IteratorProtocol是为序列提供迭代能力
+    public protocol IteratorProtocol {
+        associatedtype Element
+        public mutating func next() -> Self.Element?
     }
 </details>
 
