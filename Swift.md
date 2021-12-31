@@ -24,7 +24,7 @@ swift常用的集合类型Array，Dictionary，Set都遵循协议 Collection，�
         subscript(bounds: Range<Index>) -> SubSequence { get }
     }
 </details>
-Sequence 即序列，该协议目的是一系列相同类型值的集合，并且可以进行迭代（可以看做遍历，使用for-in）
+Sequence 即序列，该协议目的是一系列相同类型值的集合，并且可以进行迭代（可以看做遍历，使用for-in，序列可以是无限的
   
 <details>
   <summary>protocol Sequence</summary>
