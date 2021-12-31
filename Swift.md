@@ -1,6 +1,26 @@
 # Swift
 
 ##Learn
+
+### 0x007
+swift常用的集合类型Array，Dictionary，set都遵循协议 Collection，译为集合，是一个元素可以反复遍历并且可以通过索引的下标访问的有限集合
+协议Collection继承于Sequence，在Sequence的基础上扩展了下标访问、元素个数能特性。
+
+<details>
+  <summary>protocol Collection</summary>
+  
+    public protocol Collection : Sequence {
+    associatedtype Index : Comparable
+    var startIndex: Index { get }
+    var endIndex: Index { get }
+    var isEmpty: Bool { get }
+    var count: Int { get }
+  
+    subscript(position: Index) -> Element { get }
+    subscript(bounds: Range<Index>) -> SubSequence { get }
+    }
+</details>
+
 ### async/await
   
     func taskkkk() async -> [string] {
