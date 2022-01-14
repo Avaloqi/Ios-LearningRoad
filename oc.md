@@ -3,6 +3,13 @@
 
 ## 基本方法记录
 
+### - 跳转到故事版的某个视图
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    BarrierTableViewController *vc = [storyboard instantiateViewControllerWithIdentifier:@"BarrierTableViewController"];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+
 ### - post请求url
 参考： https://www.cnblogs.com/zhao-jie-li/p/5848144.html
 
