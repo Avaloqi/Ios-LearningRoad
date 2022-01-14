@@ -3,6 +3,32 @@
 
 ## 基本方法记录
 
+### - post请求url
+<details>
+            <summary>code</summary>
+            
+    NSLog(@"Post请求");
+    NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
+    NSString *uid = [[userDefault objectForKey:@"cookie"] substringFromIndex:4];
+    NSString *urlString = [NSString stringWithFormat:@"%@%@?token=%@", ServiceUrl, typeURL ,uid];
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    request.timeoutInterval = 7;
+    request.HTTPBody = [@"type=RULTC&data=445a5a4b00000000000000000000" dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *_Nullable data, NSURLResponse *_Nullable response, NSError *_Nullable error){
+        if(error) {
+            NSLog(@"Error: %@", error);
+        }
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        NSLog(@"%@", dict);
+    }];
+    
+    [dataTask resume];   
+</details>
+
 ### - UIIAlertController的自动消失
 
 原文链接：https://blog.csdn.net/xiaoliu_ios/article/details/50563869
