@@ -3,6 +3,9 @@
 
 ## 基本方法记录
 
+### - utf8 2 String
+    NSString *type = [uType stringByRemovingPercentEncoding];
+
 ### - 跳转到故事版的某个视图
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
