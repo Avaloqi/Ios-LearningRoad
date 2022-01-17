@@ -3,6 +3,8 @@
 
 ## 基本方法记录
 
+### - 页面传值
+
 ### - utf8 2 String
     NSString *type = [uType stringByRemovingPercentEncoding];
 
