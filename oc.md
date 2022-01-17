@@ -6,6 +6,8 @@
 ### - 页面传值
 
 ### - utf8 2 String
+参考： https://www.jianshu.com/p/e3f53d08f3dd
+
     NSString *type = [uType stringByRemovingPercentEncoding];
 
 ### - 跳转到故事版的某个视图
