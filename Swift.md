@@ -6,7 +6,84 @@
   <summary>00</summary>
 </details>
 
-### 0x003
+### Timer
+
+<details>
+  <summary>code</summary>
+  
+      func MyTimer01() -> Void {
+        self.num = numInit(self.num, useConfig: 1)
+        
+        print("启动定时器01")
+        let alert = UIAlertController(title: "Timer01", message: String(self.num), preferredStyle: .alert)
+        //注意：如果定时器是以 scheduledTimer 开头创建的，就不需要 fire。
+        Foundation.Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { (KTimer) in
+            if self.num != 0 {
+                print("01开始日期: \(KTimer.fireDate), 当前time: \(self.num)")
+                self.Ntimer = KTimer
+            }
+            self.num -= 1
+            self.time.text = String(self.num)
+            alert.message = String(self.num)
+            print(self.num)
+                
+            if self.num == 15 {
+                alert.title = "past 15s"
+                alert.addAction(UIAlertAction(title: "print", style: .default, handler: { _ in
+                    print("曾经过15s")
+                }))
+            }
+                
+            if self.num == 0 {
+                print("定时器停止")
+                KTimer.invalidate()
+                alert.dismiss(animated: true, completion: nil)
+            }
+        })
+        
+        alert.addAction(UIAlertAction(title: "cancle", style: .cancel))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func MyTimer02() -> Void {
+        self.num = numInit(self.num, useConfig: 2)
+        
+        print("启动定时器02")
+        let timer = Foundation.Timer(timeInterval: 1, repeats: true) { (KTimer) in
+            self.num -= 1
+            self.time.text = String(self.num)
+            if self.num == 0 {
+                print("定时器02停止")
+                KTimer.invalidate()
+            }
+        }
+        RunLoop.current.add(timer, forMode: .default)
+        self.Ntimer = timer
+        timer.fire()
+        //开始日期的获取
+        print("02开始日期: \(timer.fireDate), 当前time: \(self.num)")
+    }
+    
+    func MyTimer03() -> Void {
+        self.num = numInit(self.num, useConfig: 3)
+        
+        print("启动定时器03")
+        let timeDate = Date.init(timeIntervalSinceNow: 5)
+        let timer = Foundation.Timer.init(fire: timeDate, interval: 1, repeats: true) { (Timer) in
+            self.num -= 1
+            self.time.text = String(self.num)
+            if self.num == 0 {
+                print("定时器03停止")
+                Timer.invalidate()
+            }
+        }
+        RunLoop.current.add(timer, forMode: .default)
+        self.Ntimer = timer
+        timer.fire()
+        print("03开始日期: \(timer.fireDate), 当前time: \(self.num)")
+    }
+</details>
+
 
 swift
 
