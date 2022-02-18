@@ -19,6 +19,47 @@
 
 当指针不够存储数据时，才会使用动态分配内存的方式来存储数据
 
+### - 下拉刷新模版
+
+参考: https://www.cnblogs.com/jys509/p/4499023.html
+
+<details>
+    <summary>code</summary>
+    
+    
+    - (void)viewDidLoad {
+    [super viewDidLoad];
+ 
+    // 集成刷新控件
+    [self setupRefresh];
+     }
+ 
+   
+    // 集成下拉刷新
+    -(void)setupRefresh {
+    //1.添加刷新控件
+    UIRefreshControl *control=[[UIRefreshControl alloc]init];
+    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:control];
+     
+    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+    [control beginRefreshing];
+     
+    // 3.加载数据
+    [self refreshStateChange:control];
+    }
+    
+
+    // UIRefreshControl进入刷新状态：加载最新的数据
+    -(void)refreshStateChange:(UIRefreshControl *)control {
+    
+        //do stuff 
+        
+        // 结束刷新
+        [control endRefreshing];
+    }
+    
+</details>
 
 ### - 页面传值
 
