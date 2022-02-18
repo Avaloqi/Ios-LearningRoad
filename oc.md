@@ -28,25 +28,25 @@
     
     
     - (void)viewDidLoad {
-    [super viewDidLoad];
+        [super viewDidLoad];
  
-    // 集成刷新控件
-    [self setupRefresh];
+        // 集成刷新控件
+        [self setupRefresh];
      }
  
    
     // 集成下拉刷新
     -(void)setupRefresh {
-    //1.添加刷新控件
-    UIRefreshControl *control=[[UIRefreshControl alloc]init];
-    [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
-    [self.tableView addSubview:control];
+        //1.添加刷新控件
+        UIRefreshControl *control=[[UIRefreshControl alloc]init];
+        [control addTarget:self action:@selector(refreshStateChange:) forControlEvents:UIControlEventValueChanged];
+        [self.tableView addSubview:control];
      
-    //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
-    [control beginRefreshing];
+        //2.马上进入刷新状态，并不会触发UIControlEventValueChanged事件
+        [control beginRefreshing];
      
-    // 3.加载数据
-    [self refreshStateChange:control];
+        // 3.加载数据
+        [self refreshStateChange:control];
     }
     
 
@@ -54,7 +54,6 @@
     -(void)refreshStateChange:(UIRefreshControl *)control {
     
         //do stuff 
-        
         // 结束刷新
         [control endRefreshing];
     }
