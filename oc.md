@@ -3,6 +3,59 @@
 
 ## 基本方法记录
 
+## - 页面跳转的流程
+
+有PageA 和 PageB， 使用segue的detail方式从A连接到B， 此时B页面被压入导航栈，B页面导航栏左侧有返回按钮，其他segue方式均不压入
+进入PageA --> PageB --back--> PageA
+从PageB 返回到 PageA 时会走到A的 ViewWillAppear
+
+## - NSTimer使用
+可以使用NSTimer实现检测超时功能，但要注意要在主线程中调用
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+    //开启(这样定义出来就已经开启)
+        self.timer = [NSTimer scheduledTimerWithTimeInterval:timeOutInSeconds
+                                                   target:self
+                                                 selector:@selector(activityIndicatorTimer:)
+                                                 userInfo:nil
+                                                  repeats:NO];
+    });
+    
+    //关闭(也放在主线程使用)
+    [self.timer invalidate];
+    self.timer = nil;
+
+
+### - 向 UIAlertController 添加progressView进度条
+参考：https://stackoverflow.com/questions/31684482/how-to-add-progress-bar-to-uialertcontroller
+
+带有自动布局的方案
+
+    UIAlertController *alertCtr = [UIAlertController alertControllerWithTitle:@"Test" message:@"50%" preferredStyle:UIAlertControllerStyleAlert];
+    [alertCtr addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        // Do things
+    }]];
+
+    UIView *alertView = alertCtr.view;
+
+    UIProgressView *progressView = [[UIProgressView alloc] initWithFrame:CGRectZero];
+    progressView.progress = 0.5;
+    progressView.translatesAutoresizingMaskIntoConstraints = false;
+    [alertView addSubview:progressView];
+
+    NSLayoutConstraint *bottomConstraint = [progressView.bottomAnchor constraintEqualToAnchor:alertView.bottomAnchor];
+    [bottomConstraint setActive:YES];
+    bottomConstraint.constant = -45; // How to constraint to Cancel button?
+
+    [[progressView.leftAnchor constraintEqualToAnchor:alertView.leftAnchor] setActive:YES];
+    [[progressView.rightAnchor constraintEqualToAnchor:alertView.rightAnchor] setActive:YES];
+
+    [self presentViewController:alertCtr animated:true completion:nil];
+
+效果如下
+![image](https://user-images.githubusercontent.com/51845254/157813988-b4d318b3-4736-460f-9aa0-1e9b3cedd06c.png)
+
+
 ### - Taggedpointer
 
 参考：https://www.jianshu.com/p/7e6f2a299b2d
