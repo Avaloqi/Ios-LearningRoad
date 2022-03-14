@@ -3,13 +3,16 @@
 
 ## 基本方法记录
 
-## - 页面跳转的流程
+### - OC-Delegate使用
+https://www.jianshu.com/p/96cb34c9dab0
+
+### - 页面跳转的流程
 
 有PageA 和 PageB， 使用segue的detail方式从A连接到B， 此时B页面被压入导航栈，B页面导航栏左侧有返回按钮，其他segue方式均不压入
 进入PageA --> PageB --back--> PageA
 从PageB 返回到 PageA 时会走到A的 ViewWillAppear
 
-## - NSTimer使用
+### - NSTimer使用
 可以使用NSTimer实现检测超时功能，但要注意要在主线程中调用
 
     dispatch_async(dispatch_get_main_queue(), ^{
