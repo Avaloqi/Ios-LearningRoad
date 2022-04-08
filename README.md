@@ -22,3 +22,13 @@ ios/OC/Swift学习笔记
 参考：https://blog.csdn.net/leleyuan1130/article/details/56016561
 
 参考：https://www.pianshen.com/article/77731478987/
+
+### SVN 2 Git
+
+git svn clone http://xxx.xxx.xx.xxx/project/ --no-metadata --authors-file=users.txt GitProject
+cd GitProject
+git remote add origin git@xxx.xxx.xx.xxx:Group/GitProject.git
+git remote -v
+关联出错时 git remote rm origin
+git remote set-url origin http://name@xxx.xxx.xx.xxx:Group/GitProject.git
+git push -u origin master
