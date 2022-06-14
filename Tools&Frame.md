@@ -4,6 +4,7 @@
 参考：  
 https://blog.csdn.net/zWbKingGo/article/details/106427562  
 https://www.jianshu.com/p/f00e2899c155  
+https://www.likecs.com/show-203461700.html  
 
 使用步骤：  
 1.在TARGETS位置右键项目进行Duplicate，新增了一个“projectname copy” target和projecname copy-info 文件  
